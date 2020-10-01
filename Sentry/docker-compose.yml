@@ -1,0 +1,36 @@
+version: '2'
+
+volumes:
+   pgdb:
+
+services:
+  sentry:
+    image: sentry
+    ports:
+     - 9000:9000
+    environment:
+      SENTRY_SECRET_KEY: '12345678'
+      SENTRY_POSTGRES_HOST: 127.0.0.1
+      SENTRY_DB_USER: postgres
+      SENTRY_DB_PASSWORD: postgres
+      SENTRY_REDIS_HOST: 127.0.0.1
+
+  cron:
+    image: sentry
+    command: "sentry run cron"
+    environment:
+      SENTRY_SECRET_KEY: '12345678'
+      SENTRY_POSTGRES_HOST: 127.0.0.1
+      SENTRY_DB_USER: postgres
+      SENTRY_DB_PASSWORD: postgres
+      SENTRY_REDIS_HOST: 127.0.0.1
+
+  worker:
+    image: sentry
+    command: "sentry run worker"
+    environment:
+      SENTRY_SECRET_KEY: '12345678'
+      SENTRY_POSTGRES_HOST: 127.0.0.1
+      SENTRY_DB_USER: postgres
+      SENTRY_DB_PASSWORD: postgres
+      SENTRY_REDIS_HOST: 127.0.0.1

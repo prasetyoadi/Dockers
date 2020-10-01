@@ -1,0 +1,8 @@
+php-fpm:
+  image: otezvikentiy/php7.2-fpm:0.0.11
+  ports:
+      - '9000:9000'
+  volumes:
+      - ./www:/app
+  working_dir: /app
+  container_name: 'php-fpm'
