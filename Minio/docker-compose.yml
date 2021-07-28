@@ -5,6 +5,9 @@ services:
     image: 'bitnami/minio:2020'
     ports:
       - '9000:9000'
+    environment:
+    - MINIO_ACCESS_KEY=broklak
+    - MINIO_SECRET_KEY=broklak
     volumes:
       - 'minio_data:/data'
 
